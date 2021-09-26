@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://amadeus075.github.io</id>
     <title>朝承恩的猫爬架</title>
-    <updated>2021-09-26T15:49:59.932Z</updated>
+    <updated>2021-09-26T16:26:13.432Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://amadeus075.github.io"/>
     <link rel="self" href="https://amadeus075.github.io/atom.xml"/>
@@ -11,26 +11,11 @@
     <icon>https://amadeus075.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 朝承恩的猫爬架</rights>
     <entry>
-        <title type="html"><![CDATA[关于]]></title>
-        <id>https://amadeus075.github.io/post/about/</id>
-        <link href="https://amadeus075.github.io/post/about/">
-        </link>
-        <updated>2019-01-25T11:09:48.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
+        <title type="html"><![CDATA[Hello Gridea（博客搭建工具）]]></title>
         <id>https://amadeus075.github.io/post/hello-gridea/</id>
         <link href="https://amadeus075.github.io/post/hello-gridea/">
         </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
+        <updated>2021-09-26T16:26:07.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
 ✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
 ]]></summary>
@@ -55,6 +40,30 @@
 <p>未来，它一定会成为你离不开的伙伴</p>
 <p>尽情发挥你的才华吧！</p>
 <p>😘 Enjoy~</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于]]></title>
+        <id>https://amadeus075.github.io/post/about/</id>
+        <link href="https://amadeus075.github.io/post/about/">
+        </link>
+        <updated>2021-09-26T16:25:13.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>欢迎来到朝承恩的猫爬架 🤝</p>
+</blockquote>
+<h2 id="关于本站">🏠 关于本站</h2>
+<p>本站主要用于满足表达欲、发布学习笔记，以及记录一些奇奇怪怪的想法。<br>
+因为已有的社交平台已经沦落为沙雕猫图发布区，在那里并不想打破不发文字和自我想法的习惯。</p>
+<h2 id="博主是谁">👨‍💻 博主是谁</h2>
+<p>上海不知名高校    计算机科学与技术   学院及专业内底层人士   大学三年级学生<br>
+朝承恩不是本名，本人不姓朝</p>
+<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
+<p>猫<br>
+笨蛋</p>
+<h2 id="联系我呀">📬 联系我呀</h2>
+<p>QQ：1073054587<br>
+Github：Amadeus075<br>
+Mail：Amadeus075@outlook.com</p>
 ]]></content>
     </entry>
 </feed>
