@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://amadeus075.github.io</id>
-    <title>朝承恩</title>
-    <updated>2021-09-26T14:27:41.094Z</updated>
+    <title>猫爬架</title>
+    <updated>2021-09-26T14:29:03.343Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://amadeus075.github.io"/>
     <link rel="self" href="https://amadeus075.github.io/atom.xml"/>
-    <subtitle>Purr for yourself</subtitle>
+    <subtitle>Purr for myself</subtitle>
     <logo>https://amadeus075.github.io/images/avatar.png</logo>
     <icon>https://amadeus075.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, 朝承恩</rights>
+    <rights>All rights reserved 2021, 猫爬架</rights>
     <entry>
         <title type="html"><![CDATA[关于]]></title>
         <id>https://amadeus075.github.io/post/about/</id>
