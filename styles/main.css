@@ -2158,7 +2158,9 @@ body {
     .active-hidden > a {
       color: #fc6423;
       border-bottom-color: #fc6423;
-    }.bg-color {
+    }.reward-btn-text {
+        background-color: #ff6b6bfe !important;
+      }.bg-color {
       background-color: #fffffffe;
     }
     .site-meta {
@@ -2175,8 +2177,6 @@ body {
     }
     .mist .site-title i {
       background: #FFFFFFfe;
-    }.box-shadow-wrapper {
-      padding: 10px;
     }.box-shadow-wrapper {
       box-shadow: none !important;
     }body {
