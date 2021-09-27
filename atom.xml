@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://amadeus075.github.io</id>
     <title>朝承恩的猫爬架</title>
-    <updated>2021-09-27T13:00:21.458Z</updated>
+    <updated>2021-09-27T13:01:38.677Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://amadeus075.github.io"/>
     <link rel="self" href="https://amadeus075.github.io/atom.xml"/>
@@ -17,7 +17,7 @@
         </link>
         <updated>2021-09-27T12:59:20.000Z</updated>
         <content type="html"><![CDATA[<h1 id="食用说明">食用说明</h1>
-<p>历年卷中设计到的书本页数，是以计算机学院 李青老师编写的C++书籍（蓝色的，忘记名字了，书也送给学弟了）为标准。</p>
+<p>历年卷中涉及到的书本页数，是以计算机学院 李青老师编写的C++书籍（蓝色的，忘记名字了，书也送给学弟了）为标准。</p>
 <p>历年卷老师应该会在复习课之前发电子版。</p>
 <p>其余复习资料可在我的Github仓库中找到，Github链接在博主的头像下方可以找到。</p>
 <p>本文很大程度上参考了一位学长的博客，本人并不认识他，故仅附其博客地址：</p>
@@ -390,39 +390,39 @@ cout &lt;&lt; &quot;x = &quot;x &lt;&lt; &quot;;y = &quot;&lt;&lt; y &lt;&lt; en
 <h2 id="阅读书目">阅读书目</h2>
 <ul class="contains-task-list">
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2177253"><label class="task-list-item-label" for="task-item-2177253"> 图解TCP/IP</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5334576"><label class="task-list-item-label" for="task-item-5334576"> 图解TCP/IP</label></p>
 <p>​	在学校课程开始前阅读了一小半，后面因为忙别的事情搁置了，希望自己能看完</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5092502"><label class="task-list-item-label" for="task-item-5092502"> 计算机网络-自顶向下方法</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1327318"><label class="task-list-item-label" for="task-item-1327318"> 计算机网络-自顶向下方法</label></p>
 <p>​	打算读完图解TCP之后读</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3896399"><label class="task-list-item-label" for="task-item-3896399"> 鸟哥的Linux私房菜</label></p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8368470"><label class="task-list-item-label" for="task-item-8368470"> 鸟哥的Linux私房菜</label></p>
 <p>​	也是在学校的OS课之前读的，进度50%吧，后面的章节感觉暂时不太用得上（？）</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7307941"><label class="task-list-item-label" for="task-item-7307941"> Rust程序设计语言</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5099634"><label class="task-list-item-label" for="task-item-5099634"> Rust程序设计语言</label></p>
 <p>​	13/20章。还需要时间去消化和实际操作</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3962425"><label class="task-list-item-label" for="task-item-3962425"> 算法导论</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9439879"><label class="task-list-item-label" for="task-item-9439879"> 算法导论</label></p>
 <p>​	发现老师是根据这本书而非课本进行讲课、布置题目的</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7872272"><label class="task-list-item-label" for="task-item-7872272"> 动手深度学习+PyTorch</label></p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1832782"><label class="task-list-item-label" for="task-item-1832782"> 动手深度学习+PyTorch</label></p>
 <p>​	暑假实习时扫过一遍</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3803373"><label class="task-list-item-label" for="task-item-3803373"> Linux就该这么学</label></p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4438131"><label class="task-list-item-label" for="task-item-4438131"> Linux就该这么学</label></p>
 <p>​	不如鸟哥</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-427702"><label class="task-list-item-label" for="task-item-427702"> 利用Python进行数据分析</label></p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1361988"><label class="task-list-item-label" for="task-item-1361988"> 利用Python进行数据分析</label></p>
 <p>​	暑假实习时扫过一遍</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-740256"><label class="task-list-item-label" for="task-item-740256"> Python程序设计</label></p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8062518"><label class="task-list-item-label" for="task-item-8062518"> Python程序设计</label></p>
 <p>​	为了恶补Python读的</p>
 </li>
 </ul>
@@ -430,11 +430,11 @@ cout &lt;&lt; &quot;x = &quot;x &lt;&lt; &quot;;y = &quot;&lt;&lt; y &lt;&lt; en
 <p>​	    感觉排版和代码格式很不喜欢，放弃读了</p>
 <ul class="contains-task-list">
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4848846"><label class="task-list-item-label" for="task-item-4848846"> 数字图像处理</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1814697"><label class="task-list-item-label" for="task-item-1814697"> 数字图像处理</label></p>
 <p>​	好多数学公式</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9725574"><label class="task-list-item-label" for="task-item-9725574"> python计算机视觉</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2637619"><label class="task-list-item-label" for="task-item-2637619"> python计算机视觉</label></p>
 <p>​	课内实验大概要用到</p>
 </li>
 </ul>
