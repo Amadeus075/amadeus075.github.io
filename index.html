@@ -9,7 +9,7 @@
 <meta name="description" content="Purr for myself">
 <meta name="theme-color" content="#000">
 <title>朝承恩的猫爬架</title>
-<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Amadeus075/amadeus075.github.io@main//favicon.ico?v=1632799489440">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Amadeus075/amadeus075.github.io@main//favicon.ico?v=1632799745840">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Amadeus075/amadeus075.github.io@main//media/css/gemini.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Amadeus075/amadeus075.github.io@main//media/fonts/font-awesome.css">
 <link
@@ -413,7 +413,7 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1518<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1517<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
@@ -1645,8 +1645,8 @@
 &lt;pre&gt;&lt;code&gt;docker exec -it txz-demo /bin/bash
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;数据处理&#34;&gt;数据处理&lt;/h2&gt;
-&lt;h3 id=&#34;voc转coco数据&#34;&gt;VOC转COCO数据&lt;/h3&gt;
-&lt;h4 id=&#34;1-voc格式与coco格式&#34;&gt;1、VOC格式与COCO格式&lt;/h4&gt;
+&lt;h3 id=&#34;1-voc转coco数据&#34;&gt;1、VOC转COCO数据&lt;/h3&gt;
+&lt;h4 id=&#34;voc格式与coco格式&#34;&gt;VOC格式与COCO格式&lt;/h4&gt;
 &lt;h5 id=&#34;xml的文件格式&#34;&gt;XML的文件格式&lt;/h5&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://i.loli.net/2021/09/28/MVgDPt8R9bU6Wr5.png&#34; alt=&#34;image-20210803163739529&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;可以看到一个xml文件包含如下信息：&lt;/p&gt;
@@ -1687,7 +1687,7 @@
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://i.loli.net/2021/09/28/2kLCgKx9N3IFuOz.png&#34; alt=&#34;image-20210803191443020&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h5 id=&#34;coco的json文件格式&#34;&gt;COCO的json文件格式&lt;/h5&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://i.loli.net/2021/09/28/MZHR5VyW2cD1pua.png&#34; alt=&#34;image-20210803163951297&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h4 id=&#34;2-voc数据集格式转化成coco数据集格式&#34;&gt;2、VOC数据集格式转化成COCO数据集格式&lt;/h4&gt;
+&lt;h4 id=&#34;voc数据集格式转化成coco数据集格式&#34;&gt;VOC数据集格式转化成COCO数据集格式&lt;/h4&gt;
 &lt;p&gt;https://www.pythonheidong.com/blog/article/322231/adafa1d556aea468052f/&lt;/p&gt;
 &lt;p&gt;代码修改&lt;code&gt;xml&lt;/code&gt;和&lt;code&gt;json&lt;/code&gt;路径即可运行。&lt;/p&gt;
 &lt;p&gt;结果：生成 train.json 和 val.json&lt;/p&gt;
@@ -1699,8 +1699,8 @@
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://i.loli.net/2021/09/28/RHcxhfSoYUDK18W.png&#34; alt=&#34;image-20210804163005721&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://i.loli.net/2021/09/28/SAI9dJQF14G3czZ.png&#34; alt=&#34;image-20210804163021473&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://i.loli.net/2021/09/28/7UMeIF4L3lDHsJQ.png&#34; alt=&#34;image-20210804163131036&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h4 id=&#34;3-config修改&#34;&gt;3、config修改&lt;/h4&gt;
-&lt;h5 id=&#34;标签&#34;&gt;标签&lt;/h5&gt;
+&lt;h3 id=&#34;2-config修改&#34;&gt;2、config修改&lt;/h3&gt;
+&lt;h4 id=&#34;标签&#34;&gt;标签&lt;/h4&gt;
 &lt;p&gt;弯曲	1&lt;br&gt;
 磕碰	2&lt;br&gt;
 断柱	3&lt;br&gt;
@@ -1708,7 +1708,7 @@
 盲孔	5&lt;/p&gt;
 &lt;p&gt;用xml to coco.py生成train.json 和 val.json后，修改configs文件&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;mmdetection/configs/faster_rcnn/faster_rcnn_r101_fpn_1x_coco.py&lt;/code&gt;	以该配置文件为例&lt;/p&gt;
-&lt;h5 id=&#34;定义数据种类&#34;&gt;定义数据种类&lt;/h5&gt;
+&lt;h4 id=&#34;定义数据种类&#34;&gt;定义数据种类&lt;/h4&gt;
 &lt;p&gt;把CLASSES的tuple改为自己数据集对应的种类tuple即可&lt;/p&gt;
 &lt;p&gt;注意：如果只有一个类，要加上一个逗号，否则将会报错。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# /workspace/mmdetection/mmdet/datasets/coco.py	 # 文件路径
@@ -1728,7 +1728,7 @@ def coco_classes():	# 如果用coco数据集，就改coco_classes
         &#39;弯曲&#39;, &#39;磕碰&#39;, &#39;断柱&#39;, &#39;断裂&#39;, &#39;盲孔&#39;
     ]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h5 id=&#34;修改模型文件&#34;&gt;修改模型文件&lt;/h5&gt;
+&lt;h4 id=&#34;修改模型文件&#34;&gt;修改模型文件&lt;/h4&gt;
 &lt;p&gt;（因为模型为faster_rcnn_r101_fpn_1x，所以配置对应的config文件）&lt;/p&gt;
 &lt;p&gt;找到&lt;code&gt;mmdetection/configs/faster_rcnn/faster_rcnn_r101_fpn_1x_coco.py&lt;/code&gt;文件，打开后发现&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;_base_ = &#39;./faster_rcnn_r50_fpn_1x_coco.py&#39;
@@ -1754,8 +1754,8 @@ def coco_classes():	# 如果用coco数据集，就改coco_classes
 #     &#39;../_base_/schedules/schedule_1x.py&#39;, &#39;../_base_/default_runtime.py&#39;
 # ]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h4 id=&#34;4-训练命令&#34;&gt;4、训练命令&lt;/h4&gt;
-&lt;h5 id=&#34;开始训练&#34;&gt;开始训练&lt;/h5&gt;
+&lt;h3 id=&#34;3-训练命令&#34;&gt;3、训练命令&lt;/h3&gt;
+&lt;h4 id=&#34;开始训练&#34;&gt;开始训练&lt;/h4&gt;
 &lt;p&gt;训练前在mmdetection的目录下新建work_dirs文件夹。&lt;/p&gt;
 &lt;p&gt;重要：若改动框架源代码后，一定要注意重新编译后再使用。类似这里修改了几个源代码文件后再使用train命令之前，先要编译，执行下面命令。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;pip install -v -e .  # or &amp;quot;python setup.py develop&amp;quot;
@@ -1774,8 +1774,8 @@ python tools/train.py configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py   --wor
 &lt;p&gt;训练参考：https://blog.csdn.net/weixin_42035347/article/details/118692679&lt;/p&gt;
 &lt;p&gt;训练结果显示：&lt;/p&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://i.loli.net/2021/09/28/NgROftaHcBhCsmk.png&#34; alt=&#34;image-20210804184054344&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h4 id=&#34;5-测试命令&#34;&gt;5、测试命令&lt;/h4&gt;
-&lt;h5 id=&#34;参数显示&#34;&gt;参数显示&lt;/h5&gt;
+&lt;h3 id=&#34;4-测试命令&#34;&gt;4、测试命令&lt;/h3&gt;
+&lt;h4 id=&#34;参数显示&#34;&gt;参数显示&lt;/h4&gt;
 &lt;p&gt;测试命令	使用脚本test.py&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;python tools/test.py /workspace/mmdetection/configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py /workspace/mmdetection/work_dir02/epoch_12.pth --out /workspace/mmdetection/work_dir02/result/result.pkl --eval bbox
 &lt;/code&gt;&lt;/pre&gt;
@@ -1788,7 +1788,7 @@ python tools/train.py configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py   --wor
 &lt;p&gt;如下是我测试的结果显示（测试集图片有11张）：&lt;/p&gt;
 &lt;p&gt;输出结果：&lt;/p&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://i.loli.net/2021/09/28/PsdJGNlVzi9vFa7.png&#34; alt=&#34;image-20210804192108149&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h5 id=&#34;预测图片并保存&#34;&gt;预测图片并保存&lt;/h5&gt;
+&lt;h4 id=&#34;预测图片并保存&#34;&gt;预测图片并保存&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;--show-dir&lt;/code&gt; 参数，可以把测试的检测图片检测结果保存到指定文件夹中，如下命令：&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;python tools/test.py ./configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py /workspace/mmdetection/work_dir02/epoch_12.pth --out /workspace/mmdetection/work_dir02/result/result.pkl --show-dir /workspace/mmdetection/work_dir02/test_hat_result
 &lt;/code&gt;&lt;/pre&gt;
@@ -3759,39 +3759,39 @@ cout &amp;lt;&amp;lt; &amp;quot;x = &amp;quot;x &amp;lt;&amp;lt; &amp;quot;;y = 
 &lt;h2 id=&#34;阅读书目&#34;&gt;阅读书目&lt;/h2&gt;
 &lt;ul class=&#34;contains-task-list&#34;&gt;
 &lt;li class=&#34;task-list-item&#34;&gt;
-&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-2623778&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-2623778&#34;&gt; 图解TCP/IP&lt;/label&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-7196138&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-7196138&#34;&gt; 图解TCP/IP&lt;/label&gt;&lt;/p&gt;
 &lt;p&gt;​	在学校课程开始前阅读了一小半，后面因为忙别的事情搁置了，希望自己能看完&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class=&#34;task-list-item&#34;&gt;
-&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-37867&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-37867&#34;&gt; 计算机网络-自顶向下方法&lt;/label&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-6544842&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-6544842&#34;&gt; 计算机网络-自顶向下方法&lt;/label&gt;&lt;/p&gt;
 &lt;p&gt;​	打算读完图解TCP之后读&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class=&#34;task-list-item&#34;&gt;
-&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-3332325&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-3332325&#34;&gt; 鸟哥的Linux私房菜&lt;/label&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-5791233&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-5791233&#34;&gt; 鸟哥的Linux私房菜&lt;/label&gt;&lt;/p&gt;
 &lt;p&gt;​	也是在学校的OS课之前读的，进度50%吧，后面的章节感觉暂时不太用得上（？）&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class=&#34;task-list-item&#34;&gt;
-&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-8547731&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-8547731&#34;&gt; Rust程序设计语言&lt;/label&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-2948114&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-2948114&#34;&gt; Rust程序设计语言&lt;/label&gt;&lt;/p&gt;
 &lt;p&gt;​	13/20章。还需要时间去消化和实际操作&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class=&#34;task-list-item&#34;&gt;
-&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-8347291&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-8347291&#34;&gt; 算法导论&lt;/label&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-7414063&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-7414063&#34;&gt; 算法导论&lt;/label&gt;&lt;/p&gt;
 &lt;p&gt;​	发现老师是根据这本书而非课本进行讲课、布置题目的&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class=&#34;task-list-item&#34;&gt;
-&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-6148107&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-6148107&#34;&gt; 动手深度学习+PyTorch&lt;/label&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-1048643&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-1048643&#34;&gt; 动手深度学习+PyTorch&lt;/label&gt;&lt;/p&gt;
 &lt;p&gt;​	暑假实习时扫过一遍&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class=&#34;task-list-item&#34;&gt;
-&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-7044837&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-7044837&#34;&gt; Linux就该这么学&lt;/label&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-6503840&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-6503840&#34;&gt; Linux就该这么学&lt;/label&gt;&lt;/p&gt;
 &lt;p&gt;​	不如鸟哥&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class=&#34;task-list-item&#34;&gt;
-&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-6331419&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-6331419&#34;&gt; 利用Python进行数据分析&lt;/label&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-4622244&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-4622244&#34;&gt; 利用Python进行数据分析&lt;/label&gt;&lt;/p&gt;
 &lt;p&gt;​	暑假实习时扫过一遍&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class=&#34;task-list-item&#34;&gt;
-&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-7338866&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-7338866&#34;&gt; Python程序设计&lt;/label&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-9068751&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-9068751&#34;&gt; Python程序设计&lt;/label&gt;&lt;/p&gt;
 &lt;p&gt;​	为了恶补Python读的&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -3799,11 +3799,11 @@ cout &amp;lt;&amp;lt; &amp;quot;x = &amp;quot;x &amp;lt;&amp;lt; &amp;quot;;y = 
 &lt;p&gt;​	    感觉排版和代码格式很不喜欢，放弃读了&lt;/p&gt;
 &lt;ul class=&#34;contains-task-list&#34;&gt;
 &lt;li class=&#34;task-list-item&#34;&gt;
-&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-8344957&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-8344957&#34;&gt; 数字图像处理&lt;/label&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-9213552&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-9213552&#34;&gt; 数字图像处理&lt;/label&gt;&lt;/p&gt;
 &lt;p&gt;​	好多数学公式&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class=&#34;task-list-item&#34;&gt;
-&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-5979393&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-5979393&#34;&gt; python计算机视觉&lt;/label&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class=&#34;task-list-item-checkbox&#34; disabled=&#34;&#34; type=&#34;checkbox&#34; id=&#34;task-item-1015371&#34;&gt;&lt;label class=&#34;task-list-item-label&#34; for=&#34;task-item-1015371&#34;&gt; python计算机视觉&lt;/label&gt;&lt;/p&gt;
 &lt;p&gt;​	课内实验大概要用到&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://amadeus075.github.io</id>
     <title>朝承恩的猫爬架</title>
-    <updated>2021-09-28T03:24:52.569Z</updated>
+    <updated>2021-09-28T03:29:08.822Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://amadeus075.github.io"/>
     <link rel="self" href="https://amadeus075.github.io/atom.xml"/>
@@ -44,8 +44,8 @@
 <pre><code>docker exec -it txz-demo /bin/bash
 </code></pre>
 <h2 id="数据处理">数据处理</h2>
-<h3 id="voc转coco数据">VOC转COCO数据</h3>
-<h4 id="1-voc格式与coco格式">1、VOC格式与COCO格式</h4>
+<h3 id="1-voc转coco数据">1、VOC转COCO数据</h3>
+<h4 id="voc格式与coco格式">VOC格式与COCO格式</h4>
 <h5 id="xml的文件格式">XML的文件格式</h5>
 <figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/09/28/MVgDPt8R9bU6Wr5.png" alt="image-20210803163739529" loading="lazy"></figure>
 <p>可以看到一个xml文件包含如下信息：</p>
@@ -86,7 +86,7 @@
 <figure data-type="image" tabindex="3"><img src="https://i.loli.net/2021/09/28/2kLCgKx9N3IFuOz.png" alt="image-20210803191443020" loading="lazy"></figure>
 <h5 id="coco的json文件格式">COCO的json文件格式</h5>
 <figure data-type="image" tabindex="4"><img src="https://i.loli.net/2021/09/28/MZHR5VyW2cD1pua.png" alt="image-20210803163951297" loading="lazy"></figure>
-<h4 id="2-voc数据集格式转化成coco数据集格式">2、VOC数据集格式转化成COCO数据集格式</h4>
+<h4 id="voc数据集格式转化成coco数据集格式">VOC数据集格式转化成COCO数据集格式</h4>
 <p>https://www.pythonheidong.com/blog/article/322231/adafa1d556aea468052f/</p>
 <p>代码修改<code>xml</code>和<code>json</code>路径即可运行。</p>
 <p>结果：生成 train.json 和 val.json</p>
@@ -98,8 +98,8 @@
 <figure data-type="image" tabindex="6"><img src="https://i.loli.net/2021/09/28/RHcxhfSoYUDK18W.png" alt="image-20210804163005721" loading="lazy"></figure>
 <figure data-type="image" tabindex="7"><img src="https://i.loli.net/2021/09/28/SAI9dJQF14G3czZ.png" alt="image-20210804163021473" loading="lazy"></figure>
 <figure data-type="image" tabindex="8"><img src="https://i.loli.net/2021/09/28/7UMeIF4L3lDHsJQ.png" alt="image-20210804163131036" loading="lazy"></figure>
-<h4 id="3-config修改">3、config修改</h4>
-<h5 id="标签">标签</h5>
+<h3 id="2-config修改">2、config修改</h3>
+<h4 id="标签">标签</h4>
 <p>弯曲	1<br>
 磕碰	2<br>
 断柱	3<br>
@@ -107,7 +107,7 @@
 盲孔	5</p>
 <p>用xml to coco.py生成train.json 和 val.json后，修改configs文件</p>
 <p><code>mmdetection/configs/faster_rcnn/faster_rcnn_r101_fpn_1x_coco.py</code>	以该配置文件为例</p>
-<h5 id="定义数据种类">定义数据种类</h5>
+<h4 id="定义数据种类">定义数据种类</h4>
 <p>把CLASSES的tuple改为自己数据集对应的种类tuple即可</p>
 <p>注意：如果只有一个类，要加上一个逗号，否则将会报错。</p>
 <pre><code class="language-python"># /workspace/mmdetection/mmdet/datasets/coco.py	 # 文件路径
@@ -127,7 +127,7 @@ def coco_classes():	# 如果用coco数据集，就改coco_classes
         '弯曲', '磕碰', '断柱', '断裂', '盲孔'
     ]
 </code></pre>
-<h5 id="修改模型文件">修改模型文件</h5>
+<h4 id="修改模型文件">修改模型文件</h4>
 <p>（因为模型为faster_rcnn_r101_fpn_1x，所以配置对应的config文件）</p>
 <p>找到<code>mmdetection/configs/faster_rcnn/faster_rcnn_r101_fpn_1x_coco.py</code>文件，打开后发现</p>
 <pre><code class="language-python">_base_ = './faster_rcnn_r50_fpn_1x_coco.py'
@@ -153,8 +153,8 @@ def coco_classes():	# 如果用coco数据集，就改coco_classes
 #     '../_base_/schedules/schedule_1x.py', '../_base_/default_runtime.py'
 # ]
 </code></pre>
-<h4 id="4-训练命令">4、训练命令</h4>
-<h5 id="开始训练">开始训练</h5>
+<h3 id="3-训练命令">3、训练命令</h3>
+<h4 id="开始训练">开始训练</h4>
 <p>训练前在mmdetection的目录下新建work_dirs文件夹。</p>
 <p>重要：若改动框架源代码后，一定要注意重新编译后再使用。类似这里修改了几个源代码文件后再使用train命令之前，先要编译，执行下面命令。</p>
 <pre><code class="language-python">pip install -v -e .  # or &quot;python setup.py develop&quot;
@@ -173,8 +173,8 @@ python tools/train.py configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py   --wor
 <p>训练参考：https://blog.csdn.net/weixin_42035347/article/details/118692679</p>
 <p>训练结果显示：</p>
 <figure data-type="image" tabindex="9"><img src="https://i.loli.net/2021/09/28/NgROftaHcBhCsmk.png" alt="image-20210804184054344" loading="lazy"></figure>
-<h4 id="5-测试命令">5、测试命令</h4>
-<h5 id="参数显示">参数显示</h5>
+<h3 id="4-测试命令">4、测试命令</h3>
+<h4 id="参数显示">参数显示</h4>
 <p>测试命令	使用脚本test.py</p>
 <pre><code class="language-python">python tools/test.py /workspace/mmdetection/configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py /workspace/mmdetection/work_dir02/epoch_12.pth --out /workspace/mmdetection/work_dir02/result/result.pkl --eval bbox
 </code></pre>
@@ -187,7 +187,7 @@ python tools/train.py configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py   --wor
 <p>如下是我测试的结果显示（测试集图片有11张）：</p>
 <p>输出结果：</p>
 <figure data-type="image" tabindex="10"><img src="https://i.loli.net/2021/09/28/PsdJGNlVzi9vFa7.png" alt="image-20210804192108149" loading="lazy"></figure>
-<h5 id="预测图片并保存">预测图片并保存</h5>
+<h4 id="预测图片并保存">预测图片并保存</h4>
 <p>使用<code>--show-dir</code> 参数，可以把测试的检测图片检测结果保存到指定文件夹中，如下命令：</p>
 <pre><code class="language-python">python tools/test.py ./configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py /workspace/mmdetection/work_dir02/epoch_12.pth --out /workspace/mmdetection/work_dir02/result/result.pkl --show-dir /workspace/mmdetection/work_dir02/test_hat_result
 </code></pre>
@@ -2170,39 +2170,39 @@ cout &lt;&lt; &quot;x = &quot;x &lt;&lt; &quot;;y = &quot;&lt;&lt; y &lt;&lt; en
 <h2 id="阅读书目">阅读书目</h2>
 <ul class="contains-task-list">
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2623778"><label class="task-list-item-label" for="task-item-2623778"> 图解TCP/IP</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7196138"><label class="task-list-item-label" for="task-item-7196138"> 图解TCP/IP</label></p>
 <p>​	在学校课程开始前阅读了一小半，后面因为忙别的事情搁置了，希望自己能看完</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-37867"><label class="task-list-item-label" for="task-item-37867"> 计算机网络-自顶向下方法</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6544842"><label class="task-list-item-label" for="task-item-6544842"> 计算机网络-自顶向下方法</label></p>
 <p>​	打算读完图解TCP之后读</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3332325"><label class="task-list-item-label" for="task-item-3332325"> 鸟哥的Linux私房菜</label></p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5791233"><label class="task-list-item-label" for="task-item-5791233"> 鸟哥的Linux私房菜</label></p>
 <p>​	也是在学校的OS课之前读的，进度50%吧，后面的章节感觉暂时不太用得上（？）</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8547731"><label class="task-list-item-label" for="task-item-8547731"> Rust程序设计语言</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2948114"><label class="task-list-item-label" for="task-item-2948114"> Rust程序设计语言</label></p>
 <p>​	13/20章。还需要时间去消化和实际操作</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8347291"><label class="task-list-item-label" for="task-item-8347291"> 算法导论</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7414063"><label class="task-list-item-label" for="task-item-7414063"> 算法导论</label></p>
 <p>​	发现老师是根据这本书而非课本进行讲课、布置题目的</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6148107"><label class="task-list-item-label" for="task-item-6148107"> 动手深度学习+PyTorch</label></p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1048643"><label class="task-list-item-label" for="task-item-1048643"> 动手深度学习+PyTorch</label></p>
 <p>​	暑假实习时扫过一遍</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7044837"><label class="task-list-item-label" for="task-item-7044837"> Linux就该这么学</label></p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6503840"><label class="task-list-item-label" for="task-item-6503840"> Linux就该这么学</label></p>
 <p>​	不如鸟哥</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6331419"><label class="task-list-item-label" for="task-item-6331419"> 利用Python进行数据分析</label></p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4622244"><label class="task-list-item-label" for="task-item-4622244"> 利用Python进行数据分析</label></p>
 <p>​	暑假实习时扫过一遍</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7338866"><label class="task-list-item-label" for="task-item-7338866"> Python程序设计</label></p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9068751"><label class="task-list-item-label" for="task-item-9068751"> Python程序设计</label></p>
 <p>​	为了恶补Python读的</p>
 </li>
 </ul>
@@ -2210,11 +2210,11 @@ cout &lt;&lt; &quot;x = &quot;x &lt;&lt; &quot;;y = &quot;&lt;&lt; y &lt;&lt; en
 <p>​	    感觉排版和代码格式很不喜欢，放弃读了</p>
 <ul class="contains-task-list">
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8344957"><label class="task-list-item-label" for="task-item-8344957"> 数字图像处理</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9213552"><label class="task-list-item-label" for="task-item-9213552"> 数字图像处理</label></p>
 <p>​	好多数学公式</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5979393"><label class="task-list-item-label" for="task-item-5979393"> python计算机视觉</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1015371"><label class="task-list-item-label" for="task-item-1015371"> python计算机视觉</label></p>
 <p>​	课内实验大概要用到</p>
 </li>
 </ul>
