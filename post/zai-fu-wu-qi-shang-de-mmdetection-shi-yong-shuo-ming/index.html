@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="Purr for myself">
 <meta name="theme-color" content="#000">
-<title>朝承恩的猫爬架</title>
+<title>在服务器上的mmdetection食用说明 | 朝承恩的猫爬架</title>
 <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Amadeus075/amadeus075.github.io@main//favicon.ico?v=1632799489440">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Amadeus075/amadeus075.github.io@main//media/css/gemini.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Amadeus075/amadeus075.github.io@main//media/fonts/font-awesome.css">
@@ -41,7 +41,8 @@
 
 
 
-  <meta name="description" content="Purr for myself">
+  <meta name="description" content="在服务器上的mmdetection食用说明" />
+  <meta name="keywords" content="Python,mmdetection,目标检测,服务器,Pytorch" />
 </head>
 
 <body>
@@ -90,7 +91,7 @@
             
               
             
-            <li class="nav-item nav-item-active">
+            <li class="nav-item ">
               
               
                 <a href="/archives/" target="_self">
@@ -174,10 +175,26 @@
   <div class="main-continer">
     
     <div
-      class="section-layout  gemini">
+      class="section-layout gemini ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="https://cdn.jsdelivr.net/gh/Amadeus075/amadeus075.github.io@main//images/avatar.png"/>
@@ -246,136 +263,710 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li><a href="#mmdetection%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97">mmdetection使用指南</a>
+<ul>
+<li><a href="#%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8">连接服务器</a>
+<ul>
+<li><a href="#%E5%90%AF%E5%8A%A8docker%E6%9F%90%E4%B8%AAimage%E9%95%9C%E5%83%8F%E7%9A%84container%E5%AE%B9%E5%99%A8">启动docker某个image（镜像）的container（容器）</a></li>
+<li><a href="#%E8%BF%9B%E5%85%A5container%E5%AE%B9%E5%99%A8">进入container（容器）</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86">数据处理</a>
+<ul>
+<li><a href="#voc%E8%BD%ACcoco%E6%95%B0%E6%8D%AE">VOC转COCO数据</a>
+<ul>
+<li><a href="#1-voc%E6%A0%BC%E5%BC%8F%E4%B8%8Ecoco%E6%A0%BC%E5%BC%8F">1、VOC格式与COCO格式</a>
+<ul>
+<li><a href="#xml%E7%9A%84%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F">XML的文件格式</a></li>
+<li><a href="#coco%E7%9B%AE%E5%BD%95">COCO目录</a></li>
+<li><a href="#coco%E7%9A%84json%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F">COCO的json文件格式</a></li>
+</ul>
+</li>
+<li><a href="#2-voc%E6%95%B0%E6%8D%AE%E9%9B%86%E6%A0%BC%E5%BC%8F%E8%BD%AC%E5%8C%96%E6%88%90coco%E6%95%B0%E6%8D%AE%E9%9B%86%E6%A0%BC%E5%BC%8F">2、VOC数据集格式转化成COCO数据集格式</a></li>
+<li><a href="#3-config%E4%BF%AE%E6%94%B9">3、config修改</a>
+<ul>
+<li><a href="#%E6%A0%87%E7%AD%BE">标签</a></li>
+<li><a href="#%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E7%A7%8D%E7%B1%BB">定义数据种类</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E6%A8%A1%E5%9E%8B%E6%96%87%E4%BB%B6">修改模型文件</a></li>
+</ul>
+</li>
+<li><a href="#4-%E8%AE%AD%E7%BB%83%E5%91%BD%E4%BB%A4">4、训练命令</a>
+<ul>
+<li><a href="#%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83">开始训练</a></li>
+</ul>
+</li>
+<li><a href="#5-%E6%B5%8B%E8%AF%95%E5%91%BD%E4%BB%A4">5、测试命令</a>
+<ul>
+<li><a href="#%E5%8F%82%E6%95%B0%E6%98%BE%E7%A4%BA">参数显示</a></li>
+<li><a href="#%E9%A2%84%E6%B5%8B%E5%9B%BE%E7%89%87%E5%B9%B6%E4%BF%9D%E5%AD%98">预测图片并保存</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%8A%A5%E9%94%99">报错</a>
+<ul>
+<li><a href="#mmdetection-20-%E6%B2%A1%E6%9C%89show_result%E7%9A%84%E9%97%AE%E9%A2%98">mmdetection 2.0 没有show_result的问题</a></li>
+<li><a href="#modulenotfounderror-no-module-named-mmcv_ext%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">ModuleNotFoundError: No module named ‘mmcv._ext‘解决方案</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%82%E8%80%83%E5%8D%9A%E5%AE%A2">参考博客</a>
+<ul>
+<li><a href="#mmdetection20-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86-%E6%B5%8B%E8%AF%95%E4%BB%A5%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E9%9B%86%E5%90%88">mmdetection2.0 环境搭建、训练自己的数据集、测试以及常见错误集合</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
 </div>
+
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'gemini';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
       }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
     });
   }
-  </script>
-        <div class="section-box box-shadow-wrapper">
-          <section class="section archives-section bg-color posts-expand">
-            
 
-<div class="bg-color">
-  <div class="archive-timeline-box">
-    <div class="archive-timeline-title">
-      
-        <h2 class="language" data-lan="archives" data-count="6">非常好！目前共计6篇日志，继续努力！</h2>
-      
-    </div>
-    
-      
-      
-        <div class="node-title">
-          <h2 class="tag-year">2021</h2>
-        </div>    
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
+          
         
-      
-      <a href="https://amadeus075.github.io/post/zai-fu-wu-qi-shang-de-mmdetection-shi-yong-shuo-ming/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              09-28
-              <small>在服务器上的mmdetection食用说明</small>
-            </h1>
-          </div>  
       </div>
-      </a>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    jQuery.Velocity(hideElement, 'stop');
+    jQuery.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        jQuery.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://amadeus075.github.io/post/zai-fu-wu-qi-shang-de-mmdetection-shi-yong-shuo-ming/">
+      在服务器上的mmdetection食用说明
+    </a>
+  </h1>
+  <div class="post-meta">
     
-      
-      
-      <a href="https://amadeus075.github.io/post/shu-ju-jie-gou-2-qi-mo-fu-xi/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              09-28
-              <small>数据结构2 期末复习</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2021-09-28 11:21:57">2021-09-28</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
     
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://amadeus075.github.io/post/shu-ju-jie-gou-1-fu-xi-bi-ji/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              09-27
-              <small>数据结构1 复习笔记</small>
-            </h1>
-          </div>  
-      </div>
+      <a href="https://amadeus075.github.io/tag/Zeiq2Ube7/">
+        <span>Python</span>
+      </a>、
+      
+      
+      
+      <a href="https://amadeus075.github.io/tag/nKU4a2kcvz/">
+        <span>mmdetection</span>
+      </a>、
+      
+      
+      
+      <a href="https://amadeus075.github.io/tag/ASub4_pSR0/">
+        <span>目标检测</span>
+      </a>、
+      
+      
+      
+      <a href="https://amadeus075.github.io/tag/tdR1m5R0KE/">
+        <span>服务器</span>
+      </a>、
+      
+      
+      
+      <a href="https://amadeus075.github.io/tag/8d0RaG69j1/">
+        <span>Pytorch</span>
       </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
     
-      
-      
-      <a href="https://amadeus075.github.io/post/mian-xiang-dui-xiang-cheng-xu-she-ji-qi-mo-fu-xi/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              09-27
-              <small>面向对象程序设计（期末复习）</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>7<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>1518<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
     
-      
-      
-      <a href="https://amadeus075.github.io/post/ben-zhan-de-da-jian-yuan-yin/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              09-27
-              <small>本站的搭建原因</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
     
-      
-      
-      <a href="https://amadeus075.github.io/post/about/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              09-27
-              <small>使用说明（置顶）</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
+    
+    <span id="/post/zai-fu-wu-qi-shang-de-mmdetection-shi-yong-shuo-ming/" data-flag-title="在服务器上的mmdetection食用说明" class="meta-item pc-show leancloud_visitors">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
+    </span>
     
   </div>
-  
-<div class="page bg-color">
-  <ul class="pagination-ul">
-    
-    
-      
-        <li class="pagination-li pagination-active">
-            <a href="/archives/page/../">
-              1
-            </a>
-        </li>
-      
-    
-    
-  </ul>
-</div>
-</div>
+</section>
+            <div class="post-body next-md-body" id="post_body">
+              <h1 id="mmdetection使用指南">mmdetection使用指南</h1>
+<h2 id="连接服务器">连接服务器</h2>
+<h3 id="启动docker某个image镜像的container容器">启动docker某个image（镜像）的container（容器）</h3>
+<p>Docker的镜像称为image，容器称为container。</p>
+<p>对于Docker来说，image是静态的，类似于操作系统快照，而container则是动态的，是image的运行实例。</p>
+<p>比如，有一个image名称为ubuntu，那么比如现在我们启动这个image的container并且进入到这个container的bash命令行中：</p>
+<pre><code>docker run -t -i ubuntu /bin/bash
+</code></pre>
+<p>这样就进入container的内部了：</p>
+<pre><code>root@af8bae53bdd3:/#
+</code></pre>
+<p>如果有运行中的container，可以在container所在的外部操作系统中运行：</p>
+<pre><code>docker ps
+</code></pre>
+<p>如果要退出就：</p>
+<p>Ctrl-D</p>
+<p>或：</p>
+<pre><code>root@af8bae53bdd3:/# exit
+</code></pre>
+<h3 id="进入container容器">进入container（容器）</h3>
+<p>要想退出container时，让container仍然在后台运行着，可以使用“docker exec -it”命令。每次使用这个命令进入container，当退出container后，container仍然在后台运行，命令使用方法如下：</p>
+<ul>
+<li><strong>txz-demo：要启动的container的名称</strong></li>
+<li><strong>/bin/bash：在container中启动一个bash shell</strong></li>
+</ul>
+<pre><code>docker exec -it txz-demo /bin/bash
+</code></pre>
+<h2 id="数据处理">数据处理</h2>
+<h3 id="voc转coco数据">VOC转COCO数据</h3>
+<h4 id="1-voc格式与coco格式">1、VOC格式与COCO格式</h4>
+<h5 id="xml的文件格式">XML的文件格式</h5>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/09/28/MVgDPt8R9bU6Wr5.png" alt="image-20210803163739529" loading="lazy"></figure>
+<p>可以看到一个xml文件包含如下信息：</p>
+<ul>
+<li>
+<p><strong>folder</strong>: 文件夹</p>
+</li>
+<li>
+<p><strong>filename</strong>：文件名</p>
+</li>
+<li>
+<p><strong>path</strong>：路径</p>
+</li>
+<li>
+<p>source：我项目里没有用到</p>
+</li>
+<li>
+<p><strong>size</strong>：图片大小</p>
+</li>
+<li>
+<p>segmented：图像分割会用到，本文仅以目标检测（bounding box为例进行介绍）</p>
+</li>
+<li>
+<p>object</p>
+<p>：一个xml文件可以有多个object，每个object表示一个box，每个box有如下信息组成：</p>
+<ul>
+<li><strong>name</strong>：改box框出来的object属于哪一类，例如Apple</li>
+<li><strong>bndbox</strong>：给出左上角和右下角的坐标</li>
+<li>truncated:略</li>
+<li>difficult：略</li>
+</ul>
+</li>
+</ul>
+<h5 id="coco目录">COCO目录</h5>
+<p>https://zhuanlan.zhihu.com/p/309549190</p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2021/09/28/5PyD81CYdhBHNKi.png" alt="image-20210803163926093" loading="lazy"></figure>
+<p>或者annotations中只有两个json文件：train.json 和  val.json</p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2021/09/28/2kLCgKx9N3IFuOz.png" alt="image-20210803191443020" loading="lazy"></figure>
+<h5 id="coco的json文件格式">COCO的json文件格式</h5>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2021/09/28/MZHR5VyW2cD1pua.png" alt="image-20210803163951297" loading="lazy"></figure>
+<h4 id="2-voc数据集格式转化成coco数据集格式">2、VOC数据集格式转化成COCO数据集格式</h4>
+<p>https://www.pythonheidong.com/blog/article/322231/adafa1d556aea468052f/</p>
+<p>代码修改<code>xml</code>和<code>json</code>路径即可运行。</p>
+<p>结果：生成 train.json 和 val.json</p>
+<p>官方推荐格式如下：</p>
+<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2021/09/28/ZtNkzOGp1gQbmFx.png" alt="image-20210804162829400" loading="lazy"></figure>
+<p>但是不用严格按照该数据集，因为可以在如下路径中修改</p>
+<pre><code class="language-python">/workspace/mmdetection/configs/_base_/datasets/coco_detection.py
+</code></pre>
+<figure data-type="image" tabindex="6"><img src="https://i.loli.net/2021/09/28/RHcxhfSoYUDK18W.png" alt="image-20210804163005721" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://i.loli.net/2021/09/28/SAI9dJQF14G3czZ.png" alt="image-20210804163021473" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://i.loli.net/2021/09/28/7UMeIF4L3lDHsJQ.png" alt="image-20210804163131036" loading="lazy"></figure>
+<h4 id="3-config修改">3、config修改</h4>
+<h5 id="标签">标签</h5>
+<p>弯曲	1<br>
+磕碰	2<br>
+断柱	3<br>
+断裂	4<br>
+盲孔	5</p>
+<p>用xml to coco.py生成train.json 和 val.json后，修改configs文件</p>
+<p><code>mmdetection/configs/faster_rcnn/faster_rcnn_r101_fpn_1x_coco.py</code>	以该配置文件为例</p>
+<h5 id="定义数据种类">定义数据种类</h5>
+<p>把CLASSES的tuple改为自己数据集对应的种类tuple即可</p>
+<p>注意：如果只有一个类，要加上一个逗号，否则将会报错。</p>
+<pre><code class="language-python"># /workspace/mmdetection/mmdet/datasets/coco.py	 # 文件路径
 
-          </section>
+    CLASSES = ('弯曲', '磕碰', '断柱', '断裂', '盲孔')	# 37行
+</code></pre>
+<pre><code class="language-python"># /workspace/mmdetection/mmdet/core/evaluation/class_names.py	# 文件路径
+# 这个关系到后面test的时候结果图中显示的类别名称
+
+def voc_classes():	# 如果用voc数据集，就改voc_classes
+    return [
+        '弯曲', '磕碰', '断柱', '断裂', '盲孔'
+    ]
+   
+def coco_classes():	# 如果用coco数据集，就改coco_classes
+    return [
+        '弯曲', '磕碰', '断柱', '断裂', '盲孔'
+    ]
+</code></pre>
+<h5 id="修改模型文件">修改模型文件</h5>
+<p>（因为模型为faster_rcnn_r101_fpn_1x，所以配置对应的config文件）</p>
+<p>找到<code>mmdetection/configs/faster_rcnn/faster_rcnn_r101_fpn_1x_coco.py</code>文件，打开后发现</p>
+<pre><code class="language-python">_base_ = './faster_rcnn_r50_fpn_1x_coco.py'
+</code></pre>
+<p>继续沿着这个路径去找文件，发现指向的以下文件</p>
+<pre><code class="language-python">_base_ = [
+    '../_base_/models/faster_rcnn_r50_fpn.py',   
+    #指向的是model dict，修改其中的num_classes类别为自己的类别。
+    
+    '../_base_/datasets/coco_detection.py',
+    #data dict中的workers_per_gpu=2设置为0，train_pipeline和test_pipeline中的img_scale根据自己的图片尺寸修改。
+    
+    '../_base_/schedules/schedule_1x.py',
+    #optimizer dict中修改学习率lr。当gpu数量为8时,lr=0.02；当gpu数量为4时,lr=0.01；我只有一个gpu，所以设置lr=0.0025
+    
+     '../_base_/default_runtime.py'
+]
+
+# 如果是voc数据集，改为以下：
+# _base_ = [
+#     '../_base_/models/faster_rcnn_r50_fpn.py',
+#     '../_base_/datasets/voc0712.py',
+#     '../_base_/schedules/schedule_1x.py', '../_base_/default_runtime.py'
+# ]
+</code></pre>
+<h4 id="4-训练命令">4、训练命令</h4>
+<h5 id="开始训练">开始训练</h5>
+<p>训练前在mmdetection的目录下新建work_dirs文件夹。</p>
+<p>重要：若改动框架源代码后，一定要注意重新编译后再使用。类似这里修改了几个源代码文件后再使用train命令之前，先要编译，执行下面命令。</p>
+<pre><code class="language-python">pip install -v -e .  # or &quot;python setup.py develop&quot;
+</code></pre>
+<p>最后，执行训练指令。</p>
+<p>错误命令：</p>
+<pre><code class="language-python">python /workspace/mmdetection/tools/train.py /workspace/mmdetection/configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py \
+--gpus 1 \
+--work_dir /workspace/mmdetection/work_dir02
+</code></pre>
+<p>注意：work-dir 中间是-，不是_</p>
+<p>正确命令：</p>
+<pre><code class="language-python">cd mmdetection
+python tools/train.py configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py   --work-dir work_dir02
+</code></pre>
+<p>训练参考：https://blog.csdn.net/weixin_42035347/article/details/118692679</p>
+<p>训练结果显示：</p>
+<figure data-type="image" tabindex="9"><img src="https://i.loli.net/2021/09/28/NgROftaHcBhCsmk.png" alt="image-20210804184054344" loading="lazy"></figure>
+<h4 id="5-测试命令">5、测试命令</h4>
+<h5 id="参数显示">参数显示</h5>
+<p>测试命令	使用脚本test.py</p>
+<pre><code class="language-python">python tools/test.py /workspace/mmdetection/configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py /workspace/mmdetection/work_dir02/epoch_12.pth --out /workspace/mmdetection/work_dir02/result/result.pkl --eval bbox
+</code></pre>
+<blockquote>
+<p><code>configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py</code>：是模型文件<br>
+<code>./work_dirs/my_faster_rcnn_r50_fpn_1x_coco/latest.pth</code>：是我们自己训练保存的模型<br>
+<code>./result.pkl</code>：生成一个result.pkl文件，大小1.2M，该文件中会保存各个类别对应的信息，用于计算AP</p>
+</blockquote>
+<p>.pkl文件不能使用相对路径，要使用绝对路径，否则服务器会报错</p>
+<p>如下是我测试的结果显示（测试集图片有11张）：</p>
+<p>输出结果：</p>
+<figure data-type="image" tabindex="10"><img src="https://i.loli.net/2021/09/28/PsdJGNlVzi9vFa7.png" alt="image-20210804192108149" loading="lazy"></figure>
+<h5 id="预测图片并保存">预测图片并保存</h5>
+<p>使用<code>--show-dir</code> 参数，可以把测试的检测图片检测结果保存到指定文件夹中，如下命令：</p>
+<pre><code class="language-python">python tools/test.py ./configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py /workspace/mmdetection/work_dir02/epoch_12.pth --out /workspace/mmdetection/work_dir02/result/result.pkl --show-dir /workspace/mmdetection/work_dir02/test_hat_result
+</code></pre>
+<p>运行结果：</p>
+<figure data-type="image" tabindex="11"><img src="https://i.loli.net/2021/09/28/kNmZJrzgsOycVjt.png" alt="image-20210804192430160" loading="lazy"></figure>
+<p>生成的测试结果图片会被保存到`test_hat_result文件夹下，部分测试结果如下：</p>
+<figure data-type="image" tabindex="12"><img src="https://i.loli.net/2021/09/28/bjOEDHN8gevFISa.png" alt="image-20210804192501245" loading="lazy"></figure>
+<p>准确性不高</p>
+<p>测试参考：https://blog.csdn.net/weixin_41010198/article/details/106258366</p>
+<h1 id="报错">报错</h1>
+<h2 id="mmdetection-20-没有show_result的问题">mmdetection 2.0 没有show_result的问题</h2>
+<p>很多老旧版教材中有代码：</p>
+<pre><code class="language-python">from mmdet.apis import init_detector, inference_detector, show_result
+</code></pre>
+<p>应更改为：</p>
+<pre><code class="language-python">from mmdet.apis import inference_detector, init_detector, show_result_pyplot
+	# 函数使用方法为：
+	show_result_pyplot(model, img, result)
+</code></pre>
+<blockquote>
+<p>参考：</p>
+<p>https://blog.csdn.net/W1995S/article/details/117330783</p>
+</blockquote>
+<h2 id="modulenotfounderror-no-module-named-mmcv_ext解决方案">ModuleNotFoundError: No module named ‘mmcv._ext‘解决方案</h2>
+<p>可能是你在开始安装mmcv-full的时候，没有指定版本，选择直接安装</p>
+<p>采用默认安装mmcv-full的方式，如果与你环境里的cuda和torch版本不匹配，就容易出现上面报错</p>
+<p>解决方案：卸载原来的mmcv，重新安装正确版本的mmcv-full</p>
+<blockquote>
+<p>参考：</p>
+<p>https://blog.csdn.net/wjinjie/article/details/115164251</p>
+</blockquote>
+<h1 id="参考博客">参考博客</h1>
+<h2 id="mmdetection20-环境搭建-训练自己的数据集-测试以及常见错误集合">mmdetection2.0 环境搭建、训练自己的数据集、测试以及常见错误集合</h2>
+<p>https://shliang.blog.csdn.net/article/details/106258366</p>
+
+            </div>
+            
+              <div class="reward-btn">
+                <div class="reward-btn-text">赞赏</div>
+              </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      朝承恩
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://amadeus075.github.io/post/zai-fu-wu-qi-shang-de-mmdetection-shi-yong-shuo-ming/" title="在服务器上的mmdetection食用说明">https://amadeus075.github.io/post/zai-fu-wu-qi-shang-de-mmdetection-shi-yong-shuo-ming/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://amadeus075.github.io/tag/Zeiq2Ube7/"># Python</a>
+    
+      <a href="https://amadeus075.github.io/tag/nKU4a2kcvz/"># mmdetection</a>
+    
+      <a href="https://amadeus075.github.io/tag/ASub4_pSR0/"># 目标检测</a>
+    
+      <a href="https://amadeus075.github.io/tag/tdR1m5R0KE/"># 服务器</a>
+    
+      <a href="https://amadeus075.github.io/tag/8d0RaG69j1/"># Pytorch</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="数据结构2 期末复习" href="https://amadeus075.github.io/post/shu-ju-jie-gou-2-qi-mo-fu-xi/">数据结构2 期末复习</a>
+        <a class="nav-mobile-next" title="数据结构2 期末复习" href="https://amadeus075.github.io/post/shu-ju-jie-gou-2-qi-mo-fu-xi/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+            
+            
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<div id="vcomments" style="padding: 10px 0px 0px 0px"></div>
+
+<style>
+  .v .veditor {
+    min-height: 10rem;
+    background-image: url('');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: rgba(255, 255, 255, 0);
+    resize: none;
+  }
+
+  .v .vwrap {
+    border: 1px solid #000 !important;
+  }
+
+  .v .vbtn {
+    padding: .4rem 1.2rem !important;
+    border-color: #fff !important;
+    background-color: #49b1f5 !important;
+    color: #fff !important;
+    font-size: .7rem !important;
+  }
+
+  .v .vcards .vcard .vh .vmeta .vat {
+    padding: 0 .8rem !important;
+    border: 1px solid #00c4b6 !important;
+    border-radius: 5px !important;
+    color: #00c4b6 !important;
+  }
+</style>
+<script>
+  new Valine({
+    el: '#vcomments',
+    appId: '8OL7Oe1mjrVumxVj9CK0MRck-9Nh9j0Va',
+    appKey: 'rgrqhrchV9TALju7zmnApvVn',
+    avatar: '',
+    placeholder: '记得友善评论喔~',
+    pageSize: '',
+    lang: 'zh-cn',
+    enableQQ: 'true' === 'false',
+    visitor: 'true' === 'true',
+    highlight: 'true' === 'true',
+    avatarForce: 'true' === 'false',
+  });
+</script>
+
+          </div>
         </div>
       </div>
     </div>
@@ -1126,6 +1717,235 @@
     aelem.appendChild(image);
     parent.insertBefore(aelem, next);
   })
+</script>
+
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+            <img id="zfb" class="reward-img" src="\media\images\zfb.jpg" alt="赞赏码">
+          
+          
+            <img id="wx" class="reward-img" src="\media\images\wx.jpg" alt="赞赏码">
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip">打开APP扫一扫，即可进行扫码打赏哦</p>
+    </div>
+    <div class="bottom">
+      
+      <div id="zfbBtn" class="pay-text">
+        支付宝
+      </div>
+      
+      
+      <div id="wxBtn" class="pay-text">
+        微信支付
+      </div>
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        jQuery.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        jQuery.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        jQuery.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        jQuery.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      jQuery.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      jQuery.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
 </script>
 
   </div>
@@ -3684,7 +4504,6 @@ Mail：Amadeus075@outlook.com&lt;/p&gt;
 
 
 <script src="/media/js/mouse/love.js"></script>
-
 
 
 
