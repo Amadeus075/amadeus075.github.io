@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://amadeus075.github.io</id>
     <title>朝承恩的猫爬架</title>
-    <updated>2021-10-11T12:58:30.279Z</updated>
+    <updated>2021-10-11T13:01:21.622Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://amadeus075.github.io"/>
     <link rel="self" href="https://amadeus075.github.io/atom.xml"/>
@@ -10,6 +10,118 @@
     <logo>https://amadeus075.github.io/images/avatar.png</logo>
     <icon>https://amadeus075.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 朝承恩的猫爬架</rights>
+    <entry>
+        <title type="html"><![CDATA[在服务器中用Docker创建mmdetection容器]]></title>
+        <id>https://amadeus075.github.io/post/zai-fu-wu-qi-zhong-yong-docker-chuang-jian-mmdetection-rong-qi/</id>
+        <link href="https://amadeus075.github.io/post/zai-fu-wu-qi-zhong-yong-docker-chuang-jian-mmdetection-rong-qi/">
+        </link>
+        <updated>2021-10-11T12:58:33.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="正文">正文</h1>
+<p>注意：如果需要的镜像已经在服务器中存在，则步骤①和②不用进行操作，了解一下就好，从③开始操作</p>
+<h2 id="1-查看所有本地主机上的镜像">① 查看所有本地主机上的镜像</h2>
+<pre><code class="language-shell">docker images
+</code></pre>
+<p>查看所有本地主机上的镜像</p>
+<p>发现没有mmdetection</p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/10/09/MlF9O73L4BItxdW.png" alt="image-20211009121425016" loading="lazy"></figure>
+<h2 id="2-搜索并拉取镜像">② 搜索并拉取镜像</h2>
+<pre><code class="language-shell">docker search mmdetection
+</code></pre>
+<p>搜索mmdetection镜像</p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2021/10/09/rBc9KHgFJRTsmwz.png" alt="image-20211009121507817" loading="lazy"></figure>
+<pre><code>docker pull vistart/mmdetection
+</code></pre>
+<p>拉取mmdetection镜像</p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2021/10/09/arbNvFWxJ7Mdlsk.png" alt="image-20211009121537571" loading="lazy"></figure>
+<p>拉取结束后，可以查看镜像，在最下方可以看到成功拉取到的镜像名</p>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2021/10/09/OytpT1J7g3srvFM.png" alt="image-20211009122918636" loading="lazy"></figure>
+<h2 id="3-创建容器">③ 创建容器</h2>
+<p>有了镜像才能创建容器</p>
+<p>查看当前服务器所有的镜像后，可以看到mmdetection的镜像id为085dad9cd4b0</p>
+<p>这里以创建mmdetection容器为示例，注意创建过程中的所有参数，尤其是命名格式以及文件映射：</p>
+<pre><code class="language-shell">docker run --gpus all -it --name=txz-mmdetection --shm-size 8G -p 9011:22 -v /data/tangxinzhe/txz-mmdetection:/data 085dad9cd4b0 /bin/bash
+
+
+# 这里的所有参数记得换成自己的
+# 不能和别人是一样的
+# 不能直接复制这个命令输入进去
+
+</code></pre>
+<pre><code class="language-shell">示例参数：
+--gpus all：使用gpu，这样在进入容器后可以直接使用nvidia-smi查看显卡状态
+-it：以交互模式运行
+--name=txz-mmdetection：容器取名为txz-mmdetection
+--shm-size 8G：限制大小8G
+-p 9011:22：将容器的22端口映射到服务器的9011端口上，便于后续通过openssh远程登录，注意这里创建的时候需要使用未出现过的端口号，在创建时，需要使用docker ps -a 查看所有人的端口，选择未使用的端口号，避免发生冲突。同时，如果需要再使用jupyternoebook，则在创建的时候再添加一下-p 8001:8888，这样本地浏览器可以访问
+-v /data/tangxinzhe/txz-mmdetection:/data：将自己容器下的/data目录映射到服务器本机的/data/tangxinzhe/txz-mmdetection 目录下，这里注意取名规范，为方便辨认，后续开发过程中的所有数据都放在data下
+085dad9cd4b0：通过docker images 可以查看到，这里代表mmdetection的id号
+/bin/bash：通过bash启动
+之后便进入自己的容器中了，可以进行各种类型的操作，注意退出时需要ctrl+p+q，才可以保持容器不关闭，如果想退出后关闭容器直接ctrl+d即可
+</code></pre>
+<p>输入命令后，我们进入了容器root@2cdde346c961:/#</p>
+<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2021/10/09/CRZciUaPV521djN.png" alt="image-20211009124940016" loading="lazy"></figure>
+<p>随便输入一下：python</p>
+<p>可以看到python的版本，并进入python</p>
+<p>输入quit()退出python</p>
+<p>按ctrl+d后退出容器</p>
+<p>这样退出以后容器也会关闭</p>
+<p>要再次启动容器，输入：</p>
+<pre><code class="language-shell">docker start txz-mmdetection
+</code></pre>
+<figure data-type="image" tabindex="6"><img src="https://i.loli.net/2021/10/09/R1LV8MtbXE7fBTD.png" alt="image-20211009125922550" loading="lazy"></figure>
+<h1 id="以下操作为pycharm连接服务器做准备">以下操作为Pycharm连接服务器做准备</h1>
+<h2 id="4-安装vim">④ 安装vim</h2>
+<pre><code class="language-shell">apt update
+
+apt install vim
+</code></pre>
+<h2 id="5-安装openssh">⑤ 安装openssh</h2>
+<p>由于容器内为简陋版系统，需要自行安装配置openssh</p>
+<pre><code class="language-shell">apt install openssh-server
+
+ssh-keygen -t rsa #生成ssh key，连续按回车即可
+
+
+# 示例如下
+root@93daf41b5136:/workspace# ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): #这里回车
+Created directory '/root/.ssh'.
+Enter passphrase (empty for no passphrase): #按回车
+Enter same passphrase again: #按回车
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:jBoMGW..........战术性替换............763BMcntShe0w root@93daf41b5136
+The key's randomart image is:
++---[RSA 2048]----+
+|BO.+             |
+|战术性替换         |
+|战术性替换         |
+|战术性替换         |
+|战术性替换         |
+|战术性替换         |
+|战术性替换         |
+|+.+..            |
+|.o=+..           |
++----[SHA256]-----+
+
+</code></pre>
+<p>生成密钥并启动服务以后</p>
+<pre><code class="language-shell">vim /etc/ssh/sshd_config #编辑输入/Permi，回车，找到#PermitRootLogin prohibit-password取消注释, 修改成PermitRootLogin yesesc+:wq!退出即可开放通过密码登录再输入：passwd/etc/init.d/ssh restart #重启ssh服务
+</code></pre>
+<figure data-type="image" tabindex="7"><img src="https://i.loli.net/2021/10/09/zUh7N8MiBLev6YJ.png" alt="image-20211009135402452" loading="lazy"></figure>
+<h1 id="参考">参考</h1>
+<h2 id="拉取镜像出错">拉取镜像出错</h2>
+<p>Error response from daemon: pull access denied for xxx , repository does not exist or may require 'docker login'</p>
+<p>https://www.cnblogs.com/52liming/p/13539120.html</p>
+<p>报错说明：拒绝获取xxx,  仓库不存在或者需要登录docker</p>
+<p>https://www.cnblogs.com/meloncodezhang/p/11229778.html</p>
+<h2 id="无法进入镜像">无法进入镜像</h2>
+<p>本地镜像Unable to find image :latest’ locally</p>
+<p>https://blog.csdn.net/AOSIDIN/article/details/115001461</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[用MobaXterm连接服务器]]></title>
         <id>https://amadeus075.github.io/post/yong-mobaxterm-lian-jie-fu-wu-qi/</id>
@@ -2206,39 +2318,39 @@ cout &lt;&lt; &quot;x = &quot;x &lt;&lt; &quot;;y = &quot;&lt;&lt; y &lt;&lt; en
 <h2 id="阅读书目">阅读书目</h2>
 <ul class="contains-task-list">
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3239474"><label class="task-list-item-label" for="task-item-3239474"> 图解TCP/IP</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6493434"><label class="task-list-item-label" for="task-item-6493434"> 图解TCP/IP</label></p>
 <p>​	在学校课程开始前阅读了一小半，后面因为忙别的事情搁置了，希望自己能看完</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5947075"><label class="task-list-item-label" for="task-item-5947075"> 计算机网络-自顶向下方法</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5708130"><label class="task-list-item-label" for="task-item-5708130"> 计算机网络-自顶向下方法</label></p>
 <p>​	打算读完图解TCP之后读</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3753406"><label class="task-list-item-label" for="task-item-3753406"> 鸟哥的Linux私房菜</label></p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8870777"><label class="task-list-item-label" for="task-item-8870777"> 鸟哥的Linux私房菜</label></p>
 <p>​	也是在学校的OS课之前读的，进度50%吧，后面的章节感觉暂时不太用得上（？）</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-213406"><label class="task-list-item-label" for="task-item-213406"> Rust程序设计语言</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3420479"><label class="task-list-item-label" for="task-item-3420479"> Rust程序设计语言</label></p>
 <p>​	13/20章。还需要时间去消化和实际操作</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1799855"><label class="task-list-item-label" for="task-item-1799855"> 算法导论</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7976723"><label class="task-list-item-label" for="task-item-7976723"> 算法导论</label></p>
 <p>​	发现老师是根据这本书而非课本进行讲课、布置题目的</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-121261"><label class="task-list-item-label" for="task-item-121261"> 动手深度学习+PyTorch</label></p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2406490"><label class="task-list-item-label" for="task-item-2406490"> 动手深度学习+PyTorch</label></p>
 <p>​	暑假实习时扫过一遍</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5238875"><label class="task-list-item-label" for="task-item-5238875"> Linux就该这么学</label></p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5138786"><label class="task-list-item-label" for="task-item-5138786"> Linux就该这么学</label></p>
 <p>​	不如鸟哥</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5865247"><label class="task-list-item-label" for="task-item-5865247"> 利用Python进行数据分析</label></p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9912591"><label class="task-list-item-label" for="task-item-9912591"> 利用Python进行数据分析</label></p>
 <p>​	暑假实习时扫过一遍</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3190332"><label class="task-list-item-label" for="task-item-3190332"> Python程序设计</label></p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-138832"><label class="task-list-item-label" for="task-item-138832"> Python程序设计</label></p>
 <p>​	为了恶补Python读的</p>
 </li>
 </ul>
@@ -2246,11 +2358,11 @@ cout &lt;&lt; &quot;x = &quot;x &lt;&lt; &quot;;y = &quot;&lt;&lt; y &lt;&lt; en
 <p>​	    感觉排版和代码格式很不喜欢，放弃读了</p>
 <ul class="contains-task-list">
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9243856"><label class="task-list-item-label" for="task-item-9243856"> 数字图像处理</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7411727"><label class="task-list-item-label" for="task-item-7411727"> 数字图像处理</label></p>
 <p>​	好多数学公式</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8009933"><label class="task-list-item-label" for="task-item-8009933"> python计算机视觉</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9865790"><label class="task-list-item-label" for="task-item-9865790"> python计算机视觉</label></p>
 <p>​	课内实验大概要用到</p>
 </li>
 </ul>
